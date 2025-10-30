@@ -28772,7 +28772,50 @@ lcc-qvi2.vercel.app/api/certificate/ftrgt:1  Failed to load resource: net::ERR_F
 
 _**Assistant (default)**_
 
+<think><details><summary>Thought Process</summary>**Modifying server settings**
 
+I’m thinking about modifying the server file, specifically server/src/server.js, to adjust the CORS policy. It seems like a good idea to set the header for 'Access-Control-Allow-Origin' to allow all origins with '*' to eliminate any policies. I just want to ensure that this implementation is done correctly without causing any unforeseen issues. It should help with cross-origin requests as needed, but I have to double-check everything afterwards!</details></think>
+
+---
+
+Tool use: **apply_patch**
+
+<details>
+        <summary>Apply patch for server/src/server.js</summary>
+      
+
+```diff
+<<'PATCH'
+*** Begin Patch
+*** Update File: server/src/server.js
+@@
+-  const origin = req.headers.origin;
+-  const allowOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
+-  res.header('Access-Control-Allow-Origin', allowOrigin);
++  const origin = req.headers.origin;
++  // Allow all origins to avoid CORS blocks in production; tighten later if needed
++  res.header('Access-Control-Allow-Origin', origin || '*');
+*** End Patch
+PATCH
+```
+
+---
+
+I loosened CORS to allow all origins so the browser will always receive the Access-Control-Allow-Origin header.
+
+What I changed
+- server/src/server.js: the CORS middleware now sets:
+  - Access-Control-Allow-Origin: <request origin> or '*'
+  - Responds 204 to all OPTIONS
+- This applies to every route (including /api/certificate/:id and /api/auth/*).
+
+What to do now
+- Redeploy the backend with “Clear build cache”.
+- Test:
+  - https://lcc-qvi2.vercel.app/api/health
+  - From the frontend, try public verify and admin login.
+
+Once everything works, we can tighten the allowed origins list again if you want.
 
 ---
 
