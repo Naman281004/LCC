@@ -17,18 +17,19 @@ const allowedOrigins = [
   'http://127.0.0.1:5173'
 ];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) return callback(null, true);
-    return callback(null, true); // allow all in this project; tighten if needed
-  },
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
-
-// Explicitly handle preflight for all routes (Vercel)
-app.options('*', cors());
+// Manual CORS headers to satisfy Vercel preflight handling
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  const allowOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
+  res.header('Access-Control-Allow-Origin', allowOrigin);
+  res.header('Vary', 'Origin');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+  next();
+});
 app.use(express.json());
 
 // Routes
