@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../../lib/axios';
 import { toast } from 'sonner';
 
 export default function CertificateSearch() {
@@ -21,7 +21,7 @@ export default function CertificateSearch() {
     setSearchResult(null);
 
     try {
-      const response = await axios.get(`http://localhost:5000/api/certificate/${certificateId.trim()}`);
+      const response = await axiosInstance.get(`/certificate/${certificateId.trim()}`);
       setSearchResult(response.data);
       toast.success('Certificate found!');
     } catch (err) {

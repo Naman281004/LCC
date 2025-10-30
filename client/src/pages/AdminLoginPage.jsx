@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../lib/axios';
 import { toast } from 'sonner';
 import { useAuth } from '../hooks/useAuth.jsx';
 import Verify2FA from '../components/auth/Verify2FA';
@@ -37,7 +37,7 @@ export default function AdminLoginPage() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axiosInstance.post('/auth/login', {
         email: trimmedEmail,
         password
       });

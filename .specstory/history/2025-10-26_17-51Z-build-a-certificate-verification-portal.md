@@ -28103,7 +28103,127 @@ the backend server is still showing cannot get\
 
 _**Assistant (default)**_
 
+<think><details><summary>Thought Process</summary>**Ensuring health endpoint**
 
+I'm looking at the server configuration and noticed that I need to add the '/health' path, as it was previously returning a 500 error. I'll modify the server.js to include routes for both '/' and '/health', forwarding those to the API health check. I also want to ensure the Vercel function correctly handles the '/api' prefix while implementing this. After making these edits and redeploying with a clear cache, it should work properly this time. Let's get this implemented!</details></think>
+
+---
+
+Tool use: **apply_patch**
+
+<details>
+        <summary>Apply patch for server/src/server.js</summary>
+      
+
+```diff
+<<'PATCH'
+*** Begin Patch
+*** Update File: server/src/server.js
+@@
+ // Routes
+ app.use('/api/auth', authRoutes);
+ app.use('/api/certificate', certificateRoutes);
+ 
+ // Health check endpoint
+ app.get('/api/health', (req, res) => {
+   res.json({ status: 'OK', message: 'Server is running' });
+ });
++
++// Convenience routes for root and non-prefixed health on Vercel
++app.get('/', (req, res) => {
++  res.status(200).send('LCC Backend is running. Try GET /api/health');
++});
++
++app.get('/health', (req, res) => {
++  res.json({ ok: true });
++});
+*** End Patch
+PATCH
+```
+
+---
+
+Two quick fixes applied so your backend shows a friendly page instead of “Cannot GET /”:
+
+- Added root and non-prefixed health routes in `server/src/server.js`:
+  - GET / → returns “LCC Backend is running. Try GET /api/health”
+  - GET /health → returns `{ ok: true }`
+  - GET /api/health → unchanged and returns status JSON
+
+What to do now
+- Redeploy the backend with “Clear build cache” (to ensure prisma generate and new routes are picked up).
+- Verify:
+  - https://lcc-qvi2.vercel.app/ → should show the plain text message
+  - https://lcc-qvi2.vercel.app/health → `{ ok: true }`
+  - https://lcc-qvi2.vercel.app/api/health → status JSON
+
+Your frontend is already configured to call the deployed backend API. After the backend redeploy completes, the Admin Dashboard should fetch certificates and the Account Settings endpoint should work.
+
+---
+
+_**User (2025-10-29 10:46Z)**_
+
+ailed to load resource: net::ERR_CONNECTION_REFUSEDUnderstand this error
+localhost:5000/api/auth/login:1  Failed to load resource: net::ERR_CONNECTION_REFUSEDUnderstand this error
+localhost:5000/api/auth/login:1  Failed to load resource: net::ERR_CONNECTION_REFUSED
+
+i am unable to login for admin its showing an error occured please try again
+
+---
+
+_**Assistant (default)**_
+
+<think><details><summary>Thought Process</summary>**Explaining frontend errors**
+
+It looks like the frontend is still targeting localhost, which could be due to an old environment setting or build. For admin login, I need to make sure VITE_API_URL in the frontend environment points to the right backend URL. It's also crucial that, during local development, a local backend is running. I must mention CORS and provide some quick checks too. I noticed hardcoded references in CertificateSearch.jsx and AdminLoginPage.jsx that need updating to axiosInstance. Time to modify those files!</details></think>
+
+---
+
+Tool use: **read_file**
+
+Read file: client/src/components/public/CertificateSearch.jsx
+
+---
+
+Tool use: **apply_patch**
+
+<details>
+        <summary>Apply patch for client/src/components/public/CertificateSearch.jsx</summary>
+      
+
+```diff
+<<'PATCH'
+*** Begin Patch
+*** Update File: client/src/components/public/CertificateSearch.jsx
+@@
+-import axios from 'axios';
++import axiosInstance from '../../lib/axios';
+@@
+-    try {
+-      const response = await axios.get(`http://localhost:5000/api/certificate/${certificateId.trim()}`);
++    try {
++      const response = await axiosInstance.get(`/certificate/${certificateId.trim()}`);
+*** End Patch
+PATCH
+```
+
+---
+
+Tool use: **read_file**
+
+Read file: client/src/pages/AdminLoginPage.jsx
+
+---
+
+Tool use: **apply_patch**
+
+<details>
+        <summary>Apply patch for client/src/pages/AdminLoginPage.jsx</summary>
+      
+
+```diff
+
+```
 
 ---
 
