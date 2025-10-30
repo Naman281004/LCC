@@ -1,7 +1,23 @@
 import axios from 'axios';
 
+const inferDefaultBaseURL = () => {
+  // Prefer explicit env var
+  if (import.meta.env.VITE_API_URL) return import.meta.env.VITE_API_URL;
+
+  // If running on Vercel frontend and no env set, point to deployed backend
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname || '';
+    if (host.endsWith('vercel.app') && !host.startsWith('localhost')) {
+      return 'https://lcc-qvi2.vercel.app/api';
+    }
+  }
+
+  // Local dev fallback
+  return 'http://localhost:5000/api';
+};
+
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: inferDefaultBaseURL(),
 });
 
 // Add request interceptor to include JWT token
