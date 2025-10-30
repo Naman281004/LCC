@@ -28637,3 +28637,142 @@ If it still fails, send the Response Headers of the OPTIONS request after redepl
 
 ---
 
+_**User (2025-10-29 10:46Z)**_
+
+What you must do now
+1) Ensure backend project Root Directory is server in Vercel.
+2) Build Command: npm ci && npm run vercel-build.
+3) Redeploy with “Clear build cache”.
+
+how exactly to do this
+
+---
+
+_**Assistant (default)**_
+
+Here’s exactly where to click in Vercel:
+
+Backend project (lcc-qvi2.vercel.app)
+1) Set Root Directory to server
+- Vercel dashboard → select your backend project
+- Left sidebar → Settings → General
+- Section: Project Settings → Root Directory → click “Edit”
+- Choose server (you’ll see your repo tree; click the server folder)
+- Click “Save”
+
+2) Set Build Command
+- Same project → Settings → Build & Development
+- Build Command: npm ci && npm run vercel-build
+- Output Directory: leave empty
+- Install Command: leave default (npm ci)
+
+3) Redeploy with Clear build cache
+- Go to Deployments tab
+- Click the latest failed deployment → Redeploy
+- In the dialog, check “Clear build cache and deploy”
+- Confirm
+
+4) Verify after deploy
+- Open https://lcc-qvi2.vercel.app/ → should show “LCC Backend is running…”
+- Open https://lcc-qvi2.vercel.app/health → { ok: true }
+- In browser DevTools (on https://lcc-delta.vercel.app), try login
+- In Network tab, check OPTIONS https://lcc-qvi2.vercel.app/api/auth/login:
+  - Status should be 204 (or 200) and include “Access-Control-Allow-Origin: https://lcc-delta.vercel.app”
+- Then the POST /api/auth/login should succeed
+
+If you don’t see the server folder to select in Root Directory, your project might be created from the repo root. In that case:
+- Delete the backend project in Vercel
+- Re-add it by selecting the same Git repo, then when prompted, set Root Directory to server, and proceed with the same Build Command and env vars as before.
+
+---
+
+_**User (2025-10-29 10:46Z)**_
+
+where?
+
+---
+
+_**Assistant (default)**_
+
+On that Settings page, use the left sidebar for the exact sections:
+
+- General → Project Settings
+  - Scroll to “Root Directory”
+  - Click “Edit” → choose the server folder → Save
+
+- Build and Deployment
+  - Build Command → set: npm ci && npm run vercel-build
+  - Install Command → leave default (npm ci)
+  - Output Directory → leave empty
+  - Save
+
+- Environments
+  - Add/confirm env vars (Production + Preview):
+    - DATABASE_URL
+    - JWT_SECRET
+    - EMAIL_HOST / EMAIL_PORT / EMAIL_SECURE / EMAIL_USER / EMAIL_PASS
+
+After saving, go to Deployments → open latest → Redeploy → check “Clear build cache” → Redeploy. Then test https://lcc-qvi2.vercel.app/api/health.
+
+---
+
+_**User (2025-10-29 10:46Z)**_
+
+where in the image?
+
+---
+
+_**Assistant (default)**_
+
+- In the left sidebar, click “Build and Deployment” (it’s the second item under General).
+- For Root Directory:
+  - In the left sidebar, click “General” (you’re already there), then scroll the main panel up a bit; “Project Settings” section has “Root Directory” with an “Edit” button on the right. Click “Edit” → choose the `server` folder → Save.
+- Then, still in the left sidebar, click “Build and Deployment”:
+  - Build Command: set to `npm ci && npm run vercel-build`
+  - Save.
+- Finally, go to the top nav → “Deployments” → open the latest → “Redeploy” → check “Clear build cache” → Redeploy.
+
+If you don’t see the “Root Directory” row in the General page, it might be collapsed—look for a small “Edit” on the right side of the “Project Settings” block in that same screen.
+
+---
+
+_**User (2025-10-29 10:46Z)**_
+
+
+
+---
+
+_**Assistant (default)**_
+
+<think><details><summary>Thought Process</summary>**Clarifying user settings**
+
+I see the user shared a screenshot showing the Root Directory set to 'server' and a Build Command. They’re likely asking if that's correct and what to do next. I need to tell them to save, redeploy, clear the cache, and set the Node version to 20.x. I should also mention the Prisma generate hook they added. Plus, I’ll remind them to set Environment variables and test /api/health before logging in. Keeping it concise is key!</details></think>
+
+---
+
+Looks perfect. You’ve set exactly what we needed.
+
+Do this next:
+- Click Save at the bottom of this page.
+- Go to Deployments → open latest → Redeploy → enable “Clear build cache” → Redeploy.
+- After it completes:
+  - Open https://lcc-qvi2.vercel.app/api/health (should return JSON).
+  - Try admin login from https://lcc-delta.vercel.app.
+
+If health works but login still fails, send me the Response Headers of the OPTIONS request to /api/auth/login (after redeploy).
+
+---
+
+_**User (2025-10-29 10:46Z)**_
+
+Access to XMLHttpRequest at 'https://lcc-qvi2.vercel.app/api/certificate/ftrgt' from origin 'https://lcc-delta.vercel.app' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.Understand this error
+lcc-qvi2.vercel.app/api/certificate/ftrgt:1  Failed to load resource: net::ERR_FAILED
+
+---
+
+_**Assistant (default)**_
+
+
+
+---
+

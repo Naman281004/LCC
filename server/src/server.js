@@ -20,8 +20,8 @@ const allowedOrigins = [
 // Manual CORS headers to satisfy Vercel preflight handling
 app.use((req, res, next) => {
   const origin = req.headers.origin;
-  const allowOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
-  res.header('Access-Control-Allow-Origin', allowOrigin);
+  // Allow all origins to avoid CORS blocks in production; tighten later if needed
+  res.header('Access-Control-Allow-Origin', origin || '*');
   res.header('Vary', 'Origin');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
