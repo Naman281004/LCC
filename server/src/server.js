@@ -23,6 +23,15 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
+// Convenience routes for root and non-prefixed health on Vercel
+app.get('/', (req, res) => {
+  res.status(200).send('LCC Backend is running. Try GET /api/health');
+});
+
+app.get('/health', (req, res) => {
+  res.json({ ok: true });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
