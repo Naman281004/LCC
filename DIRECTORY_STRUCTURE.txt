@@ -1,0 +1,215 @@
+Certificate Verification Portal - Complete Directory Structure
+================================================================
+
+LCC_/
+│
+├── 📄 README.md                          # Main project documentation
+├── 📄 SETUP_GUIDE.md                     # Quick start guide (START HERE!)
+├── 📄 FEATURES.md                        # Complete feature list
+├── 📄 PROJECT_SUMMARY.md                 # Project overview
+├── 📄 DIRECTORY_STRUCTURE.txt            # This file
+├── 📄 .gitignore                         # Git ignore rules
+│
+├── 📁 client/                            # React Frontend Application
+│   │
+│   ├── 📁 src/
+│   │   │
+│   │   ├── 📁 components/
+│   │   │   │
+│   │   │   ├── 📁 public/               # Public-facing components
+│   │   │   │   ├── HeroSection.jsx      # Hero banner
+│   │   │   │   ├── AboutUs.jsx          # About section
+│   │   │   │   ├── ContactInfo.jsx      # Contact details
+│   │   │   │   └── CertificateSearch.jsx # Certificate search form
+│   │   │   │
+│   │   │   ├── 📁 admin/                # Admin dashboard components
+│   │   │   │   └── AdminDashboard.jsx   # Main admin UI with CRUD
+│   │   │   │
+│   │   │   └── 📁 auth/                 # Authentication components
+│   │   │       ├── ProtectedRoute.jsx   # Route protection wrapper
+│   │   │       └── Verify2FA.jsx        # 2FA verification screen
+│   │   │
+│   │   ├── 📁 pages/                    # Page components
+│   │   │   ├── HomePage.jsx             # Public home page
+│   │   │   ├── AdminLoginPage.jsx       # Admin login page
+│   │   │   └── AdminDashboardPage.jsx   # Admin dashboard page
+│   │   │
+│   │   ├── 📁 hooks/                    # Custom React hooks
+│   │   │   └── useAuth.js               # Authentication context & hook
+│   │   │
+│   │   ├── 📁 lib/                      # Utility libraries
+│   │   │   └── axios.js                 # Configured axios instance
+│   │   │
+│   │   ├── App.jsx                      # Main app component with router
+│   │   ├── main.jsx                     # React entry point
+│   │   └── index.css                    # Global styles + Tailwind
+│   │
+│   ├── index.html                       # HTML entry point
+│   ├── vite.config.js                   # Vite configuration
+│   ├── tailwind.config.js               # Tailwind CSS configuration
+│   ├── postcss.config.js                # PostCSS configuration
+│   ├── package.json                     # Frontend dependencies
+│   ├── .gitignore                       # Frontend git ignore
+│   └── 📄 README.md                     # Frontend documentation
+│
+└── 📁 server/                            # Express Backend Application
+    │
+    ├── 📁 src/
+    │   │
+    │   ├── 📁 config/
+    │   │   └── prismaClient.js          # Prisma client singleton
+    │   │
+    │   ├── 📁 controllers/
+    │   │   ├── authController.js        # Auth logic (login, 2FA)
+    │   │   └── certificateController.js # Certificate CRUD logic
+    │   │
+    │   ├── 📁 middleware/
+    │   │   └── authMiddleware.js        # JWT verification middleware
+    │   │
+    │   ├── 📁 routes/
+    │   │   ├── authRoutes.js            # Auth endpoints
+    │   │   └── certificateRoutes.js     # Certificate endpoints
+    │   │
+    │   └── server.js                    # Express app entry point
+    │
+    ├── 📁 prisma/
+    │   └── schema.prisma                # Database schema (User, Certificate)
+    │
+    ├── 📁 scripts/                      # Utility scripts
+    │   ├── createAdmin.js               # Interactive admin creator
+    │   ├── hashPassword.js              # Password hasher utility
+    │   └── seedCertificates.js          # Sample data seeder
+    │
+    ├── .env.example                     # Environment template
+    ├── .env                             # Environment variables (DO NOT COMMIT!)
+    ├── package.json                     # Backend dependencies
+    ├── .gitignore                       # Backend git ignore
+    └── 📄 README.md                     # Backend documentation
+
+
+KEY FILES EXPLAINED
+===================
+
+📄 Configuration Files:
+├── client/vite.config.js            → Vite dev server & build config
+├── client/tailwind.config.js        → Tailwind CSS customization
+├── client/postcss.config.js         → PostCSS plugins (Tailwind)
+├── server/prisma/schema.prisma      → Database models & relations
+└── server/.env                      → Environment variables (DATABASE_URL, JWT_SECRET, PORT)
+
+🔧 Entry Points:
+├── client/src/main.jsx              → React app initialization
+├── client/src/App.jsx               → React router & layout
+└── server/src/server.js             → Express server initialization
+
+🎨 UI Components:
+├── client/src/components/public/    → Public-facing UI
+├── client/src/components/admin/     → Admin dashboard UI
+└── client/src/components/auth/      → Authentication UI
+
+🔐 Authentication:
+├── server/src/controllers/authController.js  → Login, 2FA logic
+├── server/src/middleware/authMiddleware.js   → JWT verification
+├── client/src/hooks/useAuth.js               → Auth context
+└── client/src/components/auth/               → Auth UI components
+
+💾 Database:
+├── server/prisma/schema.prisma      → Schema definition
+└── server/scripts/                  → Database utilities
+
+📡 API Layer:
+├── server/src/controllers/          → Business logic
+├── server/src/routes/               → Route definitions
+└── client/src/lib/axios.js          → API client
+
+
+IMPORTANT FILES TO EDIT
+=======================
+
+To customize your deployment:
+
+1. Environment Variables:
+   server/.env                       → Database URL, JWT secret, port
+
+2. Branding:
+   client/src/components/public/HeroSection.jsx    → Title, tagline
+   client/src/components/public/AboutUs.jsx        → Institution info
+   client/src/components/public/ContactInfo.jsx    → Contact details
+
+3. Styling:
+   client/tailwind.config.js         → Colors, fonts, theme
+   client/src/index.css              → Global styles
+
+4. Database Schema:
+   server/prisma/schema.prisma       → Add/modify models
+
+5. API Configuration:
+   client/src/lib/axios.js           → Change API URL
+
+
+FILE COUNT SUMMARY
+==================
+
+📁 Total Directories: 15
+📄 Total Files: 40+
+
+Frontend:
+  - Components: 10
+  - Pages: 3
+  - Config: 4
+  - Utils: 2
+
+Backend:
+  - Controllers: 2
+  - Routes: 2
+  - Middleware: 1
+  - Scripts: 3
+  - Config: 2
+
+Documentation: 6
+
+
+INSTALLATION ORDER
+==================
+
+1. Backend Setup:
+   cd server/
+   npm install
+   npx prisma migrate dev
+   npm run create-admin
+   npm run dev
+
+2. Frontend Setup:
+   cd client/
+   npm install
+   npm run dev
+
+3. Access:
+   Public:  http://localhost:3000
+   Admin:   http://localhost:3000/admin/login
+   API:     http://localhost:5000
+
+
+QUICK NAVIGATION
+================
+
+Want to...                          Go to...
+├── Get started quickly             → SETUP_GUIDE.md
+├── Understand features             → FEATURES.md
+├── Learn backend API               → server/README.md
+├── Learn frontend                  → client/README.md
+├── See project overview            → README.md
+├── View this summary               → PROJECT_SUMMARY.md
+├── Add admin user                  → server/scripts/createAdmin.js
+├── Customize UI                    → client/src/components/
+├── Add API endpoint                → server/src/controllers/
+├── Modify database                 → server/prisma/schema.prisma
+└── Deploy application              → README.md (Deployment section)
+
+
+===============================================================================
+📚 Start with: SETUP_GUIDE.md
+🎯 Complete features: FEATURES.md
+📖 Full docs: README.md
+===============================================================================
+

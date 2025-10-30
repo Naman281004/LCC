@@ -1,0 +1,39 @@
+{
+  "name": "certificate-verification-server",
+  "version": "1.0.0",
+  "description": "Backend server for Certificate Verification Portal",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio",
+    "create-admin": "node scripts/createAdmin.js",
+    "hash-password": "node scripts/hashPassword.js",
+    "seed": "node scripts/seedCertificates.js",
+    "seed:5000": "node scripts/seed5000Certificates.js",
+    "seed:new": "node scripts/seedNewSchema.js",
+    "test-db": "node test-db-connection.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "axios": "^1.13.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^7.0.10",
+    "qrcode": "^1.5.4",
+    "speakeasy": "^2.0.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.20.0"
+  }
+}
