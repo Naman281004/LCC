@@ -28222,12 +28222,85 @@ Tool use: **apply_patch**
       
 
 ```diff
+<<'PATCH'
+*** Begin Patch
+*** Update File: client/src/pages/AdminLoginPage.jsx
+@@
+-import axios from 'axios';
++import axiosInstance from '../lib/axios';
+@@
+-      const response = await axios.post('http://localhost:5000/api/auth/login', {
++      const response = await axiosInstance.post('/auth/login', {
+         email: trimmedEmail,
+         password
+       });
+*** End Patch
 
 ```
 
 ---
 
+Tool use: **read_lints**
 
+<details>
+          <summary>Read lints for 2 files</summary>
+      
+Lint paths:
+
+- `client/src/pages/AdminLoginPage.jsx`
+- `client/src/components/public/CertificateSearch.jsx`
+
+Lint results
+
+
+**No lint errors found**
+</details>
+
+---
+
+The error happens because the frontend was still calling localhost:5000. I fixed all hardcoded URLs to use the shared axios instance that points to your deployed backend:
+
+- Updated:
+  - client/src/lib/axios.js: auto-selects baseURL
+    - Uses VITE_API_URL if set
+    - Else, on vercel.app, defaults to https://lcc-qvi2.vercel.app/api
+    - Else falls back to http://localhost:5000/api for local dev
+  - client/src/pages/AdminLoginPage.jsx: now uses axiosInstance.post('/auth/login', …)
+  - client/src/components/public/CertificateSearch.jsx: now uses axiosInstance.get('/certificate/:id')
+
+What to do
+- Redeploy the frontend (so the new axios baseURL logic is in production).
+- Then try admin login again on https://lcc-delta.vercel.app/ and public certificate search.
+
+If you still see connection errors:
+- In the browser Network tab, click the failed request and confirm it goes to https://lcc-qvi2.vercel.app/api/… (not localhost).
+- If you set VITE_API_URL in Vercel frontend env, ensure it is exactly https://lcc-qvi2.vercel.app/api and redeploy.
+
+Once the frontend calls the deployed backend, admin login and the dashboard list should work.
+
+---
+
+_**User (2025-10-29 10:46Z)**_
+
+
+
+---
+
+_**Assistant (default)**_
+
+
+
+---
+
+Tool use: **apply_patch**
+
+<details>
+        <summary>Apply patch for server/src/server.js</summary>
+      
+
+```diff
+
+```
 
 ---
 
