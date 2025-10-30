@@ -28519,3 +28519,25 @@ If it still fails
 
 ---
 
+_**User (2025-10-29 10:46Z)**_
+
+
+Find in logs
+CtrlF
+Running build in Washington, D.C., USA (East) – iad1
+Build machine configuration: 2 cores, 8 GB
+Cloning github.com/Naman281004/LCC (Branch: main, Commit: 99be68e)
+Cloning completed: 377.000ms
+Restored build cache from previous deployment (7Xn1nscxn7k3GgZ7LDjuHTbUwRnc)
+Running "vercel build"
+Vercel CLI 48.6.7
+Error: Function Runtimes must have a valid version, for example `now-php@1.0.0`.
+
+---
+
+_**Assistant (default)**_
+
+
+
+---
+
