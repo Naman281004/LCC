@@ -17,19 +17,22 @@ const allowedOrigins = [
   'http://127.0.0.1:5173'
 ];
 
-// Manual CORS headers to satisfy Vercel preflight handling
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  // Allow all origins to avoid CORS blocks in production; tighten later if needed
-  res.header('Access-Control-Allow-Origin', origin || '*');
-  res.header('Vary', 'Origin');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(204);
-  }
-  next();
-});
+// Standard CORS middleware (production + dev)
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // server-to-server or curl
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    // Loosen temporarily to avoid blocks; tighten later if needed
+    return callback(null, true);
+  },
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 204,
+  preflightContinue: false
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(express.json());
 
 // Routes
