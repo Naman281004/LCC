@@ -4,10 +4,10 @@ const inferDefaultBaseURL = () => {
   // 1. Check for explicit environment variable
   if (import.meta.env.VITE_API_URL) {
     console.log('Using VITE_API_URL:', import.meta.env.VITE_API_URL);
-    return import.meta.env.VITE_API_URL;
+    return import.meta.env.VITE_API_URL; // Expect this to already include /api
   }
 
-  // 2. If on Vercel production, use production backend
+  // 2. If on Vercel production, use production backend with /api
   if (typeof window !== 'undefined') {
     const host = window.location.hostname || '';
     
@@ -18,7 +18,7 @@ const inferDefaultBaseURL = () => {
     }
   }
 
-  // 3. Local development fallback
+  // 3. Local development fallback with /api
   console.log('Using local development API');
   return 'http://localhost:5000/api';
 };

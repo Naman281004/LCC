@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../../lib/axios';
 import { toast } from 'sonner';
 import { useAuth } from '../../hooks/useAuth.jsx';
 
@@ -21,7 +21,7 @@ export default function Verify2FA({ email, onBack }) {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/2fa/verify', {
+      const response = await axiosInstance.post('/auth/2fa/verify', {
         email,
         token
       });
