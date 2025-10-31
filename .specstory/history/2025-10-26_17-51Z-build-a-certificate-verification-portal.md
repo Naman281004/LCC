@@ -66925,3 +66925,41 @@ I think it's time to remove some lines, specifically lines 6-9 because we've alr
 
 ---
 
+I'll clean up `server/src/server.js` by removing the duplicate `import cors from 'cors'` and the misplaced `app.use(cors(...))` lines before the app is created, keeping the correct CORS configuration below. Then you can redeploy.
+
+---
+
+Tool use: **apply_patch**
+
+<details>
+        <summary>Apply patch for server/src/server.js</summary>
+      
+
+```diff
+*** Begin Patch
+*** Update File: server/src/server.js
+@@
+ import express from 'express';
+ import cors from 'cors';
+ import dotenv from 'dotenv';
+ import authRoutes from './routes/authRoutes.js';
+ import certificateRoutes from './routes/certificateRoutes.js';
+-import cors from 'cors';
+-// ...
+-app.use(cors({ origin: true, methods: ['GET','HEAD','PUT','PATCH','POST','DELETE','OPTIONS'], allowedHeaders: ['Content-Type','Authorization'] }));
+-app.options('*', cors());
+ // Load environment variables
+ dotenv.config();
+*** End Patch
+```
+
+---
+
+- Fixed `server/src/server.js`: removed duplicate `import cors from 'cors'` and the invalid early `app.use(cors(...))` lines before `app` existed. The correct CORS setup remains below, applied after the app is created.
+
+Next
+- Commit and push, then redeploy backend with “Clear build cache”.
+- Validate `https://lcc-qvi2.vercel.app/api/health` and try a request from the frontend again.
+
+---
+
