@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
 import certificateRoutes from './routes/certificateRoutes.js';
 
-// Load environment variables
 dotenv.config();
 
 const app = express();
