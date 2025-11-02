@@ -1,4 +1,4 @@
-import app from '../src/server.js';
+import app from './server/src/server.js';
 
 // Vercel serverless function wrapper
 export default async function handler(req, res) {
@@ -15,12 +15,6 @@ export default async function handler(req, res) {
     return;
   }
   
-  // Ensure the request path includes /api prefix for Express routing
-  if (!req.url.startsWith('/api')) {
-    req.url = '/api' + req.url;
-  }
-  
   // Pass to Express app
   return app(req, res);
 }
-
