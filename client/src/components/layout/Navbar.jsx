@@ -27,10 +27,10 @@ export default function Navbar() {
             >
               <img 
                 src="/lcc-logo.png" 
-                alt="LCC Computer Center Logo" 
+                alt="LCC Sahibganj Logo" 
                 className="h-12 w-auto object-contain"
               />
-              <span className="text-xl font-bold text-gray-900">LCC Computer Center</span>
+              <span className="text-xl font-bold text-gray-900">LCC Sahibganj</span>
             </button>
           </div>
 

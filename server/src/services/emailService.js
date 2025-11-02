@@ -81,7 +81,7 @@ export const sendOTPEmail = async (email, otpCode) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: validation.email,
-      subject: 'LCC Computer Center - Admin Login OTP',
+      subject: 'LCC Sahibganj - Admin Login OTP',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #132440 0%, #16476A 100%); padding: 30px; text-align: center;">

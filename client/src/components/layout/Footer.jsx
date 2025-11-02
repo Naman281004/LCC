@@ -17,7 +17,7 @@ export default function Footer() {
             <div className="flex items-center space-x-2 mb-4">
               <img 
                 src="/lcc-logo.png" 
-                alt="LCC Computer Center Logo" 
+                alt="LCC Sahibganj Logo" 
                 className="h-12 w-auto object-contain"
               />
               <span className="text-xl font-bold">LCC Computer Center</span>

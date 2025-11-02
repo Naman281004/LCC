@@ -10,7 +10,7 @@ export default function AboutUs() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-              About LCC Computer Center
+              About LCC Sahibganj
             </h3>
             <p className="text-gray-600 mb-4">
               Established in 1996, LCC Computer Center is Sahibganj's premier computer education institute. 

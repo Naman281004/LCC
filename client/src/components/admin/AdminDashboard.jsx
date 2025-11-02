@@ -386,7 +386,7 @@ export default function AdminDashboard() {
             <div className="flex items-center">
               <img
                 src="/lcc-logo.png"
-                alt="LCC Computer Center"
+                alt="LCC Sahibganj"
                 className="h-8 w-auto cursor-pointer"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               />

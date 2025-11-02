@@ -15,6 +15,7 @@
     "seed": "node scripts/seedCertificates.js",
     "seed:5000": "node scripts/seed5000Certificates.js",
     "seed:new": "node scripts/seedNewSchema.js",
+    "delete:certs": "node scripts/deleteCertificates.js",
     "test-db": "node test-db-connection.js",
     "vercel-build": "prisma generate",
     "postinstall": "prisma generate"
