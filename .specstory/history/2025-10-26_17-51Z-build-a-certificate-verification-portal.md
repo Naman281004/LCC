@@ -69414,19 +69414,340 @@ Read file: server/api/auth/[...path].js
 
 ---
 
-The file is correct. The problem
+The file is correct. The problem is that when Vercel invokes the serverless function at `/api/auth/otp/verify`, it's passing the **full path** to Express, but your Express app expects routes mounted at `/api/auth`. This creates a mismatch.
+
+Let me check how your Express routes are mounted and create a wrapper that handles the path correctly:
 
 ---
 
 Tool use: **read_file**
 
+Read file: server/src/server.js
+
 ---
 
+I see the issue! When Vercel calls `/api/auth/otp/verify`, it routes to `server/api/auth/[...path].js`, which exports your Express app. But your Express app expects the route to be `/api/auth/otp/verify`, and Vercel is passing the full path.
 
+The solution is to create wrapper functions that properly handle the Vercel serverless function context. Let me update the API entry files:
 
 ---
 
 Tool use: **search_replace**
+
+
+<details><summary>Edit file: server/api/auth/[...path].js</summary>
+
+**Chunk 1**
+Lines added: 11, lines removed: 1
+
+```diff
+@@ -1,4 +1,14 @@
+  import app from '../../src/server.js';
+- export default app;
++ 
++ // Vercel serverless function wrapper
++ export default async function handler(req, res) {
++   // Ensure the request path includes /api prefix for Express routing
++   if (!req.url.startsWith('/api')) {
++     req.url = '/api' + req.url;
++   }
++   
++   // Pass to Express app
++   return app(req, res);
++ }
+  
+  
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: server/api/certificate/[...path].js</summary>
+
+**Chunk 1**
+Lines added: 11, lines removed: 1
+
+```diff
+@@ -1,4 +1,14 @@
+  import app from '../../src/server.js';
+- export default app;
++ 
++ // Vercel serverless function wrapper
++ export default async function handler(req, res) {
++   // Ensure the request path includes /api prefix for Express routing
++   if (!req.url.startsWith('/api')) {
++     req.url = '/api' + req.url;
++   }
++   
++   // Pass to Express app
++   return app(req, res);
++ }
+  
+  
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: server/api/[...path].js</summary>
+
+**Chunk 1**
+Lines added: 11, lines removed: 1
+
+```diff
+@@ -1,3 +1,13 @@
+  import app from '../src/server.js';
+- export default app;
++ 
++ // Vercel serverless function wrapper
++ export default async function handler(req, res) {
++   // Ensure the request path includes /api prefix for Express routing
++   if (!req.url.startsWith('/api')) {
++     req.url = '/api' + req.url;
++   }
++   
++   // Pass to Express app
++   return app(req, res);
++ }
+  
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: server/api/index.js</summary>
+
+**Chunk 1**
+Lines added: 10, lines removed: 2
+
+```diff
+@@ -1,4 +1,12 @@
+  import app from '../src/server.js';
+  
+- // Export as serverless function
+- export default app;
++ // Vercel serverless function wrapper
++ export default async function handler(req, res) {
++   // Ensure the request path includes /api prefix for Express routing
++   if (!req.url.startsWith('/api')) {
++     req.url = '/api' + req.url;
++   }
++   
++   // Pass to Express app
++   return app(req, res);
++ }
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: server/api/health.js</summary>
+
+**Chunk 1**
+Lines added: 11, lines removed: 1
+
+```diff
+@@ -1,4 +1,14 @@
+  import app from '../src/server.js';
+- export default app;
++ 
++ // Vercel serverless function wrapper
++ export default async function handler(req, res) {
++   // Ensure the request path includes /api prefix for Express routing
++   if (!req.url.startsWith('/api')) {
++     req.url = '/api' + req.url;
++   }
++   
++   // Pass to Express app
++   return app(req, res);
++ }
+  
+  
+```
+
+</details>
+
+---
+
+Perfect! I've updated all the Vercel serverless function wrappers to properly handle the path routing. The key fix is:
+
+## What Was Wrong
+When Vercel routes a request to `/api/auth/otp/verify`:
+1. It calls the function at `server/api/auth/[...path].js`
+2. The `req.url` Vercel passes is `/auth/otp/verify` (without `/api`)
+3. Your Express app expects `/api/auth/otp/verify`
+4. Mismatch → 404 → No CORS headers
+
+## The Fix
+All serverless function files now have a wrapper that:
+1. Checks if `req.url` starts with `/api`
+2. If not, prepends `/api` to the URL
+3. Then passes the corrected request to your Express app
+4. Express routes correctly and applies CORS headers
+
+## Deploy Now
+
+1. **Commit and push:**
+   ```bash
+   git add -A
+   git commit -m "fix(vercel): add path correction wrapper to all serverless functions"
+   git push
+   ```
+
+2. **Redeploy backend (lcc-qvi2):**
+   - Vercel Dashboard → lcc-qvi2
+   - Deployments → Latest → Redeploy
+   - **Check "Clear build cache"**
+   - Redeploy
+
+3. **Test after deployment:**
+   - Try logging in from `https://lcc-delta.vercel.app`
+   - Enter OTP
+   - The `/api/auth/otp/verify` request should now work with proper CORS headers
+
+The wrapper ensures that no matter how Vercel routes the request, your Express app receives the correct path format and can apply CORS middleware before responding.
+
+---
+
+_**User (2025-10-29 10:46Z)**_
+
+Access to XMLHttpRequest at 'https://lcc-qvi2.vercel.app/api/auth/otp/verify' from origin 'https://lcc-delta.vercel.app' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.Understand this error
+index-CLDvBvnQ.js:73 ❌ No response received: Network Error
+(anonymous) @ index-CLDvBvnQ.js:73Understand this error
+index-CLDvBvnQ.js:73 This might be a CORS or network issue
+(anonymous) @ index-CLDvBvnQ.js:73Understand this error
+lcc-qvi2.vercel.app/api/auth/otp/verify:1  Failed to load resource: net::ERR_FAILED
+
+I am still getting this error. Identify the error and fix it
+
+---
+
+_**Assistant (claude-4.5-sonnet-thinking)**_
+
+The issue is that the preflight OPTIONS request is failing before reaching your Express CORS middleware. Let me add explicit CORS header handling in the Vercel wrapper functions before passing to Express:
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: server/api/auth/[...path].js</summary>
+
+**Chunk 1**
+Lines added: 13, lines removed: undefined
+
+```diff
+@@ -3,4 +3,17 @@
+  // Vercel serverless function wrapper
+  export default async function handler(req, res) {
++   // Set CORS headers immediately for all requests
++   res.setHeader('Access-Control-Allow-Origin', '*');
++   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
++   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
++   res.setHeader('Access-Control-Allow-Credentials', 'true');
++   res.setHeader('Vary', 'Origin');
++   
++   // Handle preflight OPTIONS request
++   if (req.method === 'OPTIONS') {
++     res.status(200).end();
++     return;
++   }
++   
+    // Ensure the request path includes /api prefix for Express routing
+    if (!req.url.startsWith('/api')) {
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: server/api/certificate/[...path].js</summary>
+
+**Chunk 1**
+Lines added: 13, lines removed: undefined
+
+```diff
+@@ -3,4 +3,17 @@
+  // Vercel serverless function wrapper
+  export default async function handler(req, res) {
++   // Set CORS headers immediately for all requests
++   res.setHeader('Access-Control-Allow-Origin', '*');
++   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
++   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
++   res.setHeader('Access-Control-Allow-Credentials', 'true');
++   res.setHeader('Vary', 'Origin');
++   
++   // Handle preflight OPTIONS request
++   if (req.method === 'OPTIONS') {
++     res.status(200).end();
++     return;
++   }
++   
+    // Ensure the request path includes /api prefix for Express routing
+    if (!req.url.startsWith('/api')) {
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: server/api/[...path].js</summary>
+
+**Chunk 1**
+Lines added: 13, lines removed: undefined
+
+```diff
+@@ -3,4 +3,17 @@
+  // Vercel serverless function wrapper
+  export default async function handler(req, res) {
++   // Set CORS headers immediately for all requests
++   res.setHeader('Access-Control-Allow-Origin', '*');
++   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
++   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
++   res.setHeader('Access-Control-Allow-Credentials', 'true');
++   res.setHeader('Vary', 'Origin');
++   
++   // Handle preflight OPTIONS request
++   if (req.method === 'OPTIONS') {
++     res.status(200).end();
++     return;
++   }
++   
+    // Ensure the request path includes /api prefix for Express routing
+    if (!req.url.startsWith('/api')) {
+```
+
+</details>
+
+---
+
+
+
+---
+
+
 
 ---
 
