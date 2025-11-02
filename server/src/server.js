@@ -27,10 +27,18 @@ app.use(cors(corsOptions));
 // Handle preflight requests
 app.options('*', cors(corsOptions));
 
+// Request logging middleware (for debugging routing issues)
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV === 'development' || process.env.DEBUG_ROUTES) {
+    console.log(`[${req.method}] ${req.path}`, { query: req.query, params: req.params });
+  }
+  next();
+});
+
 // Body parser
 app.use(express.json());
 
-// Routes
+// API Routes - Mounted with /api prefix for uniform routing
 app.use('/api/auth', authRoutes);
 app.use('/api/certificate', certificateRoutes);
 
@@ -60,11 +68,13 @@ app.get('/health', (req, res) => {
   res.json({ ok: true, timestamp: new Date().toISOString() });
 });
 
-// 404 handler
+// 404 handler - Must be after all routes
 app.use((req, res) => {
+  console.error(`404 Not Found: ${req.method} ${req.path}`);
   res.status(404).json({
     error: 'Not Found',
     path: req.path,
+    method: req.method,
     message: 'The requested endpoint does not exist'
   });
 });
