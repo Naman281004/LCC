@@ -89,7 +89,7 @@ export default function HeroSection() {
               e.currentTarget.style.color = '#9ca3af';
             }}
           >
-            Offering 14+ comprehensive courses including DCA, ADCA, Tally, Hardware & Networking, Programming, and more. 
+            Offering 7 comprehensive courses including DCA, ADCA, Tally, and Computer Typing. 
             Verify the authenticity of certificates with your unique certificate ID.
           </p>
 

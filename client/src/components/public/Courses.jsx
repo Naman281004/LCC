@@ -1,88 +1,46 @@
 export default function Courses() {
   const courses = [
     {
-      name: "Hindi & English Typing",
-      icon: "⌨️",
-      description: "Master Hindi and English typing skills",
-      duration: "3 Months"
-    },
-    {
-      name: "Diploma in Computer Application (DCA)",
-      icon: "💻",
-      description: "Comprehensive computer fundamentals and applications",
-      duration: "6 Months"
-    },
-    {
-      name: "DCA + TALLY",
-      icon: "📊",
-      description: "Computer applications with accounting software",
-      duration: "8 Months"
-    },
-    {
-      name: "Advanced Diploma in Computer Application (ADCA)",
+      name: "ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH",
       icon: "🎓",
+      description: "Complete advanced computer education package",
+      duration: "15 Months"
+    },
+    {
+      name: "ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)",
+      icon: "💻",
       description: "Advanced computer applications and programming",
       duration: "12 Months"
     },
     {
-      name: "Diploma in Financial Accounting (DFA)",
-      icon: "💰",
-      description: "Comprehensive financial accounting training",
+      name: "DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)",
+      icon: "📊",
+      description: "Financial accounting with TALLY software",
       duration: "6 Months"
     },
     {
-      name: "Advanced Diploma in Financial Accounting (ADFA)",
+      name: "COMPUTER TYPING COURSE HINDI+ENGLISH",
+      icon: "⌨️",
+      description: "Master Hindi and English typing skills",
+      duration: "6+6 Months"
+    },
+    {
+      name: "DIPLOMA IN COMPUTER APPLICATION (DCA)",
+      icon: "💼",
+      description: "Comprehensive computer fundamentals and applications",
+      duration: "6 Months"
+    },
+    {
+      name: "DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)",
       icon: "📈",
-      description: "Advanced accounting and financial management",
-      duration: "12 Months"
+      description: "Computer applications with accounting software",
+      duration: "10 Months"
     },
     {
-      name: "10+2 Computer Science",
-      icon: "📚",
-      description: "Complete computer science curriculum for higher secondary",
-      duration: "Varies"
-    },
-    {
-      name: "C & C++",
-      icon: "⚙️",
-      description: "Master C and C++ programming languages",
-      duration: "As per syllabus"
-    },
-    {
-      name: "JAVA",
-      icon: "☕",
-      description: "Learn Java programming and development",
-      duration: "As per syllabus"
-    },
-    {
-      name: "Web Technology (HTML, CSS)",
-      icon: "🌐",
-      description: "Build modern websites with HTML and CSS",
-      duration: "As per syllabus"
-    },
-    {
-      name: "MS Office (Word, Excel, PowerPoint)",
-      icon: "📄",
-      description: "Master Microsoft Office suite applications",
-      duration: "As per syllabus"
-    },
-    {
-      name: "TALLY",
-      icon: "🧮",
-      description: "Accounting software for business management",
-      duration: "As per syllabus"
-    },
-    {
-      name: "Computer Hardware & Maintenance (DCHM)",
-      icon: "🔧",
-      description: "Diploma in computer hardware and maintenance",
-      duration: "6 Months"
-    },
-    {
-      name: "Computer Hardware & Network Engineering (DCHNE)",
+      name: "DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (ENGLISH+HINDI)",
       icon: "🖥️",
-      description: "Hardware and network engineering diploma",
-      duration: "12 Months"
+      description: "Computer applications with typing training",
+      duration: "10 Months"
     }
   ];
 

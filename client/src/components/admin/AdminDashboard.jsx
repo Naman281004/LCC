@@ -539,20 +539,13 @@ export default function AdminDashboard() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B9797] focus:border-transparent outline-none"
                         >
                           <option value="">Select Course</option>
-                          <option value="Hindi & English Typing">Hindi & English Typing</option>
-                          <option value="DCA">Diploma in Computer Application (DCA)</option>
-                          <option value="DCA + TALLY">DCA + TALLY</option>
-                          <option value="ADCA">Advanced Diploma in Computer Application (ADCA)</option>
-                          <option value="DFA">Diploma in Financial Accounting (DFA)</option>
-                          <option value="ADFA">Advanced Diploma in Financial Accounting (ADFA)</option>
-                          <option value="10+2 Computer Science">10+2 Computer Science</option>
-                          <option value="C & C++">C & C++</option>
-                          <option value="JAVA">JAVA</option>
-                          <option value="Web Technology">Web Technology (HTML, CSS)</option>
-                          <option value="MS Office">MS Office (Word, Excel, PowerPoint)</option>
-                          <option value="TALLY">TALLY</option>
-                          <option value="DCHM">Computer Hardware & Maintenance (DCHM)</option>
-                          <option value="DCHNE">Computer Hardware & Network Engineering (DCHNE)</option>
+                          <option value="ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH">ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH</option>
+                          <option value="ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)">ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)</option>
+                          <option value="DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)">DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)</option>
+                          <option value="COMPUTER TYPING COURSE HINDI+ENGLISH">COMPUTER TYPING COURSE HINDI+ENGLISH</option>
+                          <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)">DIPLOMA IN COMPUTER APPLICATION (DCA)</option>
+                          <option value="DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)">DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)</option>
+                          <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(ENGLISH+HINDI)">DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(ENGLISH+HINDI)</option>
                         </select>
                       </div>
 
@@ -721,20 +714,13 @@ export default function AdminDashboard() {
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B9797] focus:border-transparent outline-none"
                         >
                           <option value="">Select Course</option>
-                          <option value="Hindi & English Typing">Hindi & English Typing</option>
-                          <option value="DCA">Diploma in Computer Application (DCA)</option>
-                          <option value="DCA + TALLY">DCA + TALLY</option>
-                          <option value="ADCA">Advanced Diploma in Computer Application (ADCA)</option>
-                          <option value="DFA">Diploma in Financial Accounting (DFA)</option>
-                          <option value="ADFA">Advanced Diploma in Financial Accounting (ADFA)</option>
-                          <option value="10+2 Computer Science">10+2 Computer Science</option>
-                          <option value="C & C++">C & C++</option>
-                          <option value="JAVA">JAVA</option>
-                          <option value="Web Technology">Web Technology (HTML, CSS)</option>
-                          <option value="MS Office">MS Office (Word, Excel, PowerPoint)</option>
-                          <option value="TALLY">TALLY</option>
-                          <option value="DCHM">Computer Hardware & Maintenance (DCHM)</option>
-                          <option value="DCHNE">Computer Hardware & Network Engineering (DCHNE)</option>
+                          <option value="ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH">ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH</option>
+                          <option value="ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)">ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)</option>
+                          <option value="DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)">DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)</option>
+                          <option value="COMPUTER TYPING COURSE HINDI+ENGLISH">COMPUTER TYPING COURSE HINDI+ENGLISH</option>
+                          <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)">DIPLOMA IN COMPUTER APPLICATION (DCA)</option>
+                          <option value="DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)">DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)</option>
+                          <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(ENGLISH+HINDI)">DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(ENGLISH+HINDI)</option>
                         </select>
                       </div>
 
