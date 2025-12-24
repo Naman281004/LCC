@@ -116,7 +116,7 @@ export const sendOTPEmail = async (email, otpCode) => {
               © 2024 LCC Computer Center, Sahibganj | JN Roy Road, Sahibganj - 816109 (Jharkhand) India
             </p>
             <p style="color: #3B9797; margin: 5px 0 0 0; font-size: 12px;">
-              Contact: +91 6436222820 | lcccomputer@sahibganj.edu
+              Contact: +91 7004702578 | rwc.uttam@gmail.com
             </p>
           </div>
         </div>

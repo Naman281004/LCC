@@ -19,8 +19,7 @@ export default function ContactInfo() {
               </svg>
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
-            <p className="text-gray-600">lcccomputer@sahibganj.edu</p>
-            <p className="text-gray-600">info@lcccomputercenter.in</p>
+            <p className="text-gray-600">rwc.uttam@gmail.com</p>
           </div>
           
           <div className="bg-white p-8 rounded-lg shadow-sm text-center">
