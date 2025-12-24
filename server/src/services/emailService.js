@@ -144,3 +144,71 @@ export const testEmailConfig = async () => {
     return false;
   }
 };
+
+// Send callback request email to admin
+export const sendCallbackEmail = async ({ name, email, phone, course, message }) => {
+  try {
+    // Check if email configuration is available
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.log('Email configuration missing. Callback request from:', name, phone);
+      return { success: true, messageId: 'test-mode', testMode: true };
+    }
+    
+    const transporter = createTransporter();
+    
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: 'rwc.uttam@gmail.com',
+      subject: `New Callback Request from ${name}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <div style="background: linear-gradient(135deg, #132440 0%, #16476A 100%); padding: 30px; text-align: center;">
+            <h1 style="color: white; margin: 0; font-size: 28px;">LCC Computer Center</h1>
+            <p style="color: #BF092F; margin: 10px 0 0 0; font-size: 16px;">New Callback Request</p>
+          </div>
+          
+          <div style="padding: 30px; background: #f9fafb;">
+            <h2 style="color: #132440; margin-bottom: 20px;">Student Inquiry Details</h2>
+            
+            <div style="background: white; border-left: 4px solid #3B9797; padding: 20px; margin-bottom: 20px;">
+              <p style="margin: 5px 0;"><strong style="color: #132440;">Name:</strong> <span style="color: #374151;">${name}</span></p>
+              <p style="margin: 5px 0;"><strong style="color: #132440;">Phone:</strong> <span style="color: #374151;">${phone}</span></p>
+              ${email ? `<p style="margin: 5px 0;"><strong style="color: #132440;">Email:</strong> <span style="color: #374151;">${email}</span></p>` : ''}
+              ${course ? `<p style="margin: 5px 0;"><strong style="color: #132440;">Interested In:</strong> <span style="color: #374151;">${course}</span></p>` : ''}
+            </div>
+            
+            ${message ? `
+              <div style="background: white; border-left: 4px solid #3B9797; padding: 20px;">
+                <p style="margin: 0 0 10px 0;"><strong style="color: #132440;">Message:</strong></p>
+                <p style="color: #374151; margin: 0; line-height: 1.6;">${message}</p>
+              </div>
+            ` : ''}
+            
+            <div style="margin-top: 20px; padding: 15px; background: #FEF3C7; border-radius: 8px;">
+              <p style="margin: 0; color: #92400E; font-size: 14px;">
+                <strong>Action Required:</strong> Please contact this student at the provided phone number or email.
+              </p>
+            </div>
+          </div>
+          
+          <div style="background: #132440; padding: 20px; text-align: center;">
+            <p style="color: white; margin: 0; font-size: 14px;">
+              © 2024 LCC Computer Center, Sahibganj | JN Roy Road, Sahibganj - 816109 (Jharkhand) India
+            </p>
+            <p style="color: #3B9797; margin: 5px 0 0 0; font-size: 12px;">
+              Contact: +91 7004702578 | rwc.uttam@gmail.com
+            </p>
+          </div>
+        </div>
+      `
+    };
+
+    const result = await transporter.sendMail(mailOptions);
+    console.log('Callback email sent successfully:', result.messageId);
+    return { success: true, messageId: result.messageId };
+  } catch (error) {
+    console.error('Error sending callback email:', error);
+    return { success: false, error: error.message };
+  }
+};
+

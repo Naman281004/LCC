@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
 import certificateRoutes from './routes/certificateRoutes.js';
+import callbackRoutes from './routes/callbackRoutes.js';
 
 dotenv.config();
 
@@ -41,6 +42,7 @@ app.use(express.json());
 // API Routes - Mounted with /api prefix for uniform routing
 app.use('/api/auth', authRoutes);
 app.use('/api/certificate', certificateRoutes);
+app.use('/api/callback', callbackRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

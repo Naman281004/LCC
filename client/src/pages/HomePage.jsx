@@ -5,6 +5,7 @@ import AboutUs from '../components/public/AboutUs';
 import Courses from '../components/public/Courses';
 import ContactInfo from '../components/public/ContactInfo';
 import CertificateSearch from '../components/public/CertificateSearch';
+import CallbackForm from '../components/public/CallbackForm';
 
 export default function HomePage() {
   return (
@@ -16,9 +17,11 @@ export default function HomePage() {
         <AboutUs />
         <Courses />
         <ContactInfo />
+        <CallbackForm />
       </main>
       <Footer />
     </div>
   );
 }
+
 

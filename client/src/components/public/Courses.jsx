@@ -76,11 +76,171 @@ export default function Courses() {
           ))}
         </div>
 
+        {/* Aisect University Admission Section */}
+        <div className="mt-16 bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl p-8 border-2 border-teal-200">
+          <div className="text-center mb-8">
+            <button 
+              onClick={() => document.getElementById('callback-form')?.scrollIntoView({ behavior: 'smooth' })}
+              className="inline-block bg-teal-600 text-white px-6 py-2 rounded-full text-sm font-bold mb-4 hover:bg-teal-700 transition cursor-pointer"
+            >
+              🎓 Aisect University Admission Open!!!
+            </button>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">University Programs</h2>
+            <div className="w-20 h-1 mx-auto" style={{ backgroundColor: '#3B9797' }}></div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Polytechnic */}
+            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow border-t-4 border-teal-500">
+              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                <span className="text-2xl mr-2">🔧</span>
+                POLYTECHNIC
+              </h3>
+              <p className="text-sm text-gray-600 mb-4 font-semibold">3 Years - 6 Semester</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-start">
+                  <span className="text-teal-600 mr-2">•</span>
+                  <span>DIPLOMA IN COMPUTER ENGINEERING</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-teal-600 mr-2">•</span>
+                  <span>DIPLOMA IN ELECTRICAL ENGINEERING</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-teal-600 mr-2">•</span>
+                  <span>DIPLOMA IN CIVIL ENGINEERING</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-teal-600 mr-2">•</span>
+                  <span>DIPLOMA IN MINING ENGINEERING</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-teal-600 mr-2">•</span>
+                  <span>DIPLOMA IN MECHANICAL ENGINEERING</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Graduations */}
+            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow border-t-4 border-blue-500">
+              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                <span className="text-2xl mr-2">🎓</span>
+                GRADUATIONS
+              </h3>
+              <p className="text-sm text-gray-600 mb-4 font-semibold">3 Years - 6 Semester</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>BCA</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>BBA (ALL)</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>BSC-IT</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>BA - (PUBLIC ADMINISTRATION, HISTORY, POLITICAL SCIENCE, ECONOMICS, PSYCHOLOGY, HINDI, ENGLISH ETC.)</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>B.COM</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>B.SC. (PHYSICS, CHEMISTRY, MATH, IT ETC.)</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>B.LIB. SC</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>M.LIB. SC</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>BA-JOUR.& MASS COMM.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 mr-2">•</span>
+                  <span>BA-FINE ARTS, BA SOCIAL WORK (BSW)</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Master's Degree */}
+            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow border-t-4 border-purple-500">
+              <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                <span className="text-2xl mr-2">🎯</span>
+                MASTER DEGREE & POST GRADUATION
+              </h3>
+              <p className="text-sm text-gray-600 mb-4 font-semibold">1/2/3 Year</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>MCA</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>MBA (HR, IT, FM, MKT)</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>MSC-IT</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>MA - (HISTORY, POLITICAL SCIENCE, ECONOMICS, PSYCHOLOGY, HINDI, ENGLISH ETC.)</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>M.COM</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>M.SC. (PHYSICS, CHEMISTRY, MATH, IT ETC.)</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>PGDCA</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-purple-600 mr-2">•</span>
+                  <span>PGDRD</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* University Achievement Images */}
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+            <img 
+              src="/aisect-rating.png" 
+              alt="Aisect University AAA+ Rating - Careers360 Rankings 2025" 
+              className="w-full h-auto object-cover"
+            />
+          </div>
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+            <img 
+              src="/aisect-ranking.png" 
+              alt="Aisect University Rankings - 2nd in Jharkhand, 75th in India" 
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+
         <div className="mt-12 text-center">
           <p className="text-gray-600 mb-6">
             All courses include hands-on practice in our AC classrooms and labs with expert faculty guidance
           </p>
           <button
+            onClick={() => document.getElementById('callback-form')?.scrollIntoView({ behavior: 'smooth' })}
             className="px-8 py-3 text-white font-semibold rounded-lg transition"
             style={{ backgroundColor: '#3B9797' }}
             onMouseEnter={(e) => e.target.style.backgroundColor = '#2d7575'}
