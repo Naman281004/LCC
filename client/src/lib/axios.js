@@ -11,10 +11,10 @@ const inferDefaultBaseURL = () => {
   if (typeof window !== 'undefined') {
     const host = window.location.hostname || '';
     
-    // If on custom domain lccsbg.in
+    // If on custom domain lccsbg.in - use API subdomain
     if (host === 'www.lccsbg.in' || host === 'lccsbg.in') {
-      console.log('Detected custom domain, using lccsbg.in API');
-      return 'https://www.lccsbg.in/api';
+      console.log('Detected custom domain, using api.lccsbg.in');
+      return 'https://api.lccsbg.in/api';
     }
     
     // If frontend is on Vercel (but not localhost), use production backend
