@@ -127,6 +127,17 @@ const CertificatesTable = memo(function CertificatesTable({
   );
 });
 
+// Course to Duration mapping
+const COURSE_DURATIONS = {
+  "ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH": "15 Months",
+  "ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)": "12 Months",
+  "DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)": "6 Months",
+  "COMPUTER TYPING COURSE HINDI+ENGLISH": "6+6 Months",
+  "DIPLOMA IN COMPUTER APPLICATION (DCA)": "6 Months",
+  "DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)": "10 Months",
+  "DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (ENGLISH+HINDI)": "10 Months"
+};
+
 export default function AdminDashboard() {
   const [certificates, setCertificates] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -535,7 +546,14 @@ export default function AdminDashboard() {
                         <select
                           required
                           value={formData.course}
-                          onChange={(e) => setFormData(prev => ({ ...prev, course: e.target.value }))}
+                          onChange={(e) => {
+                            const selectedCourse = e.target.value;
+                            setFormData(prev => ({
+                              ...prev,
+                              course: selectedCourse,
+                              duration: COURSE_DURATIONS[selectedCourse] || ''
+                            }));
+                          }}
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B9797] focus:border-transparent outline-none"
                         >
                           <option value="">Select Course</option>
@@ -556,10 +574,10 @@ export default function AdminDashboard() {
                         <input
                           type="text"
                           required
-                          placeholder="e.g., 3 Months, 6 Months, 12 Months"
+                          readOnly
+                          placeholder="Auto-filled based on course"
                           value={formData.duration}
-                          onChange={(e) => setFormData(prev => ({ ...prev, duration: e.target.value }))}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B9797] focus:border-transparent outline-none"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 cursor-not-allowed focus:ring-2 focus:ring-[#3B9797] focus:border-transparent outline-none"
                         />
                       </div>
 
@@ -710,7 +728,14 @@ export default function AdminDashboard() {
                         <select
                           required
                           value={formData.course}
-                          onChange={(e) => setFormData(prev => ({ ...prev, course: e.target.value }))}
+                          onChange={(e) => {
+                            const selectedCourse = e.target.value;
+                            setFormData(prev => ({
+                              ...prev,
+                              course: selectedCourse,
+                              duration: COURSE_DURATIONS[selectedCourse] || ''
+                            }));
+                          }}
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B9797] focus:border-transparent outline-none"
                         >
                           <option value="">Select Course</option>
@@ -731,10 +756,10 @@ export default function AdminDashboard() {
                         <input
                           type="text"
                           required
-                          placeholder="e.g., 3 Months, 6 Months, 12 Months"
+                          readOnly
+                          placeholder="Auto-filled based on course"
                           value={formData.duration}
-                          onChange={(e) => setFormData(prev => ({ ...prev, duration: e.target.value }))}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#3B9797] focus:border-transparent outline-none"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 cursor-not-allowed focus:ring-2 focus:ring-[#3B9797] focus:border-transparent outline-none"
                         />
                       </div>
 
