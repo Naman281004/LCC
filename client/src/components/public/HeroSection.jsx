@@ -43,7 +43,7 @@ export default function HeroSection() {
               onMouseEnter={(e) => e.currentTarget.style.textShadow = '0 0 20px rgba(59, 151, 151, 0.5)'}
               onMouseLeave={(e) => e.currentTarget.style.textShadow = '0 0 0 transparent'}
             >
-              LCC Sahibganj
+              LCCC Sahibganj
             </span>
             <span 
               className="block text-3xl md:text-4xl mt-4 transition-all duration-300 cursor-default hover:scale-105" 
