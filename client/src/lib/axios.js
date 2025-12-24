@@ -7,9 +7,15 @@ const inferDefaultBaseURL = () => {
     return import.meta.env.VITE_API_URL; // Expect this to already include /api
   }
 
-  // 2. If on Vercel production, use production backend with /api
+  // 2. If on custom domain or Vercel production, use production backend with /api
   if (typeof window !== 'undefined') {
     const host = window.location.hostname || '';
+    
+    // If on custom domain lccsbg.in
+    if (host === 'www.lccsbg.in' || host === 'lccsbg.in') {
+      console.log('Detected custom domain, using lccsbg.in API');
+      return 'https://www.lccsbg.in/api';
+    }
     
     // If frontend is on Vercel (but not localhost), use production backend
     if (host.endsWith('vercel.app') && !host.startsWith('localhost')) {
@@ -20,7 +26,7 @@ const inferDefaultBaseURL = () => {
 
   // 3. Local development fallback with /api
   console.log('Using local development API');
-  return 'http://localhost:5000/api';
+  return 'http://localhost:5001/api';
 };
 
 const baseURL = inferDefaultBaseURL();

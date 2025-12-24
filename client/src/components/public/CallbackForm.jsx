@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { toast } from 'sonner';
+import axiosInstance from '../../lib/axios';
 
 export default function CallbackForm() {
   const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ export default function CallbackForm() {
     setIsSubmitting(true);
     
     try {
-      await axios.post('http://localhost:5001/api/callback', formData);
+      await axiosInstance.post('/callback', formData);
       toast.success('Your inquiry has been submitted! We will contact you soon.');
       setFormData({ name: '', email: '', phone: '', course: '', message: '' });
     } catch (error) {
