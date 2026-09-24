@@ -23,7 +23,7 @@ export default function Footer() {
               <span className="text-xl font-bold">LCC Computer Center</span>
             </div>
             <p className="text-gray-400 mb-4">
-              Sahibganj's leading computer education institute since 1996. Offering 14+ comprehensive courses in computer applications, accounting, programming, and hardware. Expert faculty with modern AC classrooms and labs.
+              Sahibganj's leading computer education institute since 1996. Offering 16+ comprehensive courses in computer applications, accounting, programming, and hardware. Expert faculty with modern AC classrooms and labs.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition">

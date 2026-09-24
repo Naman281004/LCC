@@ -559,8 +559,10 @@ export default function AdminDashboard() {
                           <option value="">Select Course</option>
                           <option value="ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH">ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH</option>
                           <option value="ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)">ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)</option>
-                          <option value="DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)">DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)</option>
+                          <option value="DIPLOMA IN ACCOUNTING AND TAXATION">DIPLOMA IN ACCOUNTING AND TAXATION</option>
                           <option value="COMPUTER TYPING COURSE HINDI+ENGLISH">COMPUTER TYPING COURSE HINDI+ENGLISH</option>
+                          <option value="ENGLISH TYPING COURSE">ENGLISH TYPING COURSE</option>
+                          <option value="HINDI TYPING COURSE">HINDI TYPING COURSE</option>
                           <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)">DIPLOMA IN COMPUTER APPLICATION (DCA)</option>
                           <option value="DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)">DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)</option>
                           <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(ENGLISH+HINDI)">DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(ENGLISH+HINDI)</option>
@@ -741,8 +743,10 @@ export default function AdminDashboard() {
                           <option value="">Select Course</option>
                           <option value="ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH">ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH</option>
                           <option value="ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)">ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)</option>
-                          <option value="DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)">DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)</option>
+                          <option value="DIPLOMA IN ACCOUNTING AND TAXATION">DIPLOMA IN ACCOUNTING AND TAXATION</option>
                           <option value="COMPUTER TYPING COURSE HINDI+ENGLISH">COMPUTER TYPING COURSE HINDI+ENGLISH</option>
+                          <option value="ENGLISH TYPING COURSE">ENGLISH TYPING COURSE</option>
+                          <option value="HINDI TYPING COURSE">HINDI TYPING COURSE</option>
                           <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)">DIPLOMA IN COMPUTER APPLICATION (DCA)</option>
                           <option value="DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)">DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)</option>
                           <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(ENGLISH+HINDI)">DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(ENGLISH+HINDI)</option>

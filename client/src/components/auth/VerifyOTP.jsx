@@ -90,7 +90,7 @@ export default function VerifyOTP({ email, onBack, testMode = false }) {
           <img
             className="mx-auto h-12 w-auto"
             src="/lcc-logo.png"
-            alt="LCCSahib"
+            alt="LCC Sahibganj"
           />
           <h2 className="mt-6 text-3xl font-bold text-gray-900">
             Verify OTP

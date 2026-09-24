@@ -3,6 +3,8 @@ const prisma = new PrismaClient();
 
 const courses = [
   { name: 'Hindi & English Typing', duration: '3 Months' },
+  { name: 'English Typing', duration: '6 Months' },
+  { name: 'Hindi Typing', duration: '6 Months' },
   { name: 'DCA', duration: '6 Months' },
   { name: 'DCA + TALLY', duration: '8 Months' },
   { name: 'ADCA', duration: '12 Months' },

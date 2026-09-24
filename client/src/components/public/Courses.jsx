@@ -13,9 +13,9 @@ export default function Courses() {
       duration: "12 Months"
     },
     {
-      name: "DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)",
+      name: "DIPLOMA IN ACCOUNTING AND TAXATION",
       icon: "📊",
-      description: "Financial accounting with TALLY software",
+      description: "Financial accounting with taxation",
       duration: "6 Months"
     },
     {
@@ -23,6 +23,18 @@ export default function Courses() {
       icon: "⌨️",
       description: "Master Hindi and English typing skills",
       duration: "6+6 Months"
+    },
+    {
+      name: "ENGLISH TYPING COURSE",
+      icon: "⌨️",
+      description: "Master English typing skills",
+      duration: "6 Months"
+    },
+    {
+      name: "HINDI TYPING COURSE",
+      icon: "⌨️",
+      description: "Master Hindi typing skills",
+      duration: "6 Months"
     },
     {
       name: "DIPLOMA IN COMPUTER APPLICATION (DCA)",
