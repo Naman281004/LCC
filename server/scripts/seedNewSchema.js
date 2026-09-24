@@ -2,22 +2,19 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const courses = [
-  { name: 'Hindi & English Typing', duration: '3 Months' },
-  { name: 'English Typing', duration: '6 Months' },
-  { name: 'Hindi Typing', duration: '6 Months' },
-  { name: 'DCA', duration: '6 Months' },
-  { name: 'DCA + TALLY', duration: '8 Months' },
-  { name: 'ADCA', duration: '12 Months' },
-  { name: 'DFA', duration: '6 Months' },
-  { name: 'ADFA', duration: '12 Months' },
-  { name: '10+2 Computer Science', duration: 'As per syllabus' },
-  { name: 'C & C++', duration: 'As per syllabus' },
-  { name: 'JAVA', duration: 'As per syllabus' },
-  { name: 'Web Technology', duration: 'As per syllabus' },
-  { name: 'MS Office', duration: 'As per syllabus' },
-  { name: 'TALLY', duration: 'As per syllabus' },
-  { name: 'DCHM', duration: '6 Months' },
-  { name: 'DCHNE', duration: '12 Months' }
+  { name: 'ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH', duration: '15 Months' },
+  { name: 'ADCA+TALLY+COMPUTER TYPING ENGLISH', duration: '15 Months' },
+  { name: 'ADCA+TALLY+COMPUTER TYPING HINDI', duration: '15 Months' },
+  { name: 'ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)', duration: '12 Months' },
+  { name: 'DIPLOMA IN ACCOUNTING AND TAXATION', duration: '6 Months' },
+  { name: 'COMPUTER TYPING COURSE HINDI+ENGLISH', duration: '6+6 Months' },
+  { name: 'COMPUTER TYPING COURSE ENGLISH', duration: '6 Months' },
+  { name: 'COMPUTER TYPING COURSE HINDI', duration: '6 Months' },
+  { name: 'DIPLOMA IN COMPUTER APPLICATION (DCA)', duration: '6 Months' },
+  { name: 'DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)', duration: '10 Months' },
+  { name: 'DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(ENGLISH+HINDI)', duration: '10 Months' },
+  { name: 'DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(ENGLISH)', duration: '10 Months' },
+  { name: 'DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING(HINDI)', duration: '10 Months' }
 ];
 
 const firstNames = ['Aarav', 'Vivaan', 'Aditya', 'Arjun', 'Sai', 'Aadhya', 'Ananya', 'Pari', 'Saanvi', 'Sara', 
@@ -44,12 +41,16 @@ function calculateEndDate(startDate, duration) {
   
   if (duration.includes('3 Months')) {
     end.setMonth(end.getMonth() + 3);
-  } else if (duration.includes('6 Months')) {
+  } else if (duration.includes('6 Months') && !duration.includes('6+6')) {
     end.setMonth(end.getMonth() + 6);
   } else if (duration.includes('8 Months')) {
     end.setMonth(end.getMonth() + 8);
-  } else if (duration.includes('12 Months')) {
+  } else if (duration.includes('10 Months')) {
+    end.setMonth(end.getMonth() + 10);
+  } else if (duration.includes('12 Months') || duration.includes('6+6 Months')) {
     end.setMonth(end.getMonth() + 12);
+  } else if (duration.includes('15 Months')) {
+    end.setMonth(end.getMonth() + 15);
   } else {
     // For "As per syllabus" courses, assume 3-6 months
     end.setMonth(end.getMonth() + Math.floor(Math.random() * 3) + 3);

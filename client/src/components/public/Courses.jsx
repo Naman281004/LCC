@@ -7,6 +7,18 @@ export default function Courses() {
       duration: "15 Months"
     },
     {
+      name: "ADCA+TALLY+COMPUTER TYPING ENGLISH",
+      icon: "🎓",
+      description: "Complete advanced computer education package",
+      duration: "15 Months"
+    },
+    {
+      name: "ADCA+TALLY+COMPUTER TYPING HINDI",
+      icon: "🎓",
+      description: "Complete advanced computer education package",
+      duration: "15 Months"
+    },
+    {
       name: "ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)",
       icon: "💻",
       description: "Advanced computer applications and programming",
@@ -50,6 +62,18 @@ export default function Courses() {
     },
     {
       name: "DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (ENGLISH+HINDI)",
+      icon: "🖥️",
+      description: "Computer applications with typing training",
+      duration: "10 Months"
+    },
+    {
+      name: "DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (ENGLISH)",
+      icon: "🖥️",
+      description: "Computer applications with typing training",
+      duration: "10 Months"
+    },
+    {
+      name: "DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (HINDI)",
       icon: "🖥️",
       description: "Computer applications with typing training",
       duration: "10 Months"

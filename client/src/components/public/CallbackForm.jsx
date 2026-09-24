@@ -99,12 +99,18 @@ export default function CallbackForm() {
               >
                 <option value="">Select a course</option>
                 <option value="ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH">ADCA+TALLY+COMPUTER TYPING HINDI+ENGLISH</option>
+                <option value="ADCA+TALLY+COMPUTER TYPING ENGLISH">ADCA+TALLY+COMPUTER TYPING ENGLISH</option>
+                <option value="ADCA+TALLY+COMPUTER TYPING HINDI">ADCA+TALLY+COMPUTER TYPING HINDI</option>
                 <option value="ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)">ADVANCED DIPLOMA IN COMPUTER APPLICATION (ADCA)</option>
-                <option value="DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)">DIPLOMA IN FINANCIAL ACCOUNTING--TALLY (DFA)</option>
+                <option value="DIPLOMA IN ACCOUNTING AND TAXATION">DIPLOMA IN ACCOUNTING AND TAXATION</option>
                 <option value="COMPUTER TYPING COURSE HINDI+ENGLISH">COMPUTER TYPING COURSE HINDI+ENGLISH</option>
+                <option value="COMPUTER TYPING COURSE ENGLISH">COMPUTER TYPING COURSE ENGLISH</option>
+                <option value="COMPUTER TYPING COURSE HINDI">COMPUTER TYPING COURSE HINDI</option>
                 <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)">DIPLOMA IN COMPUTER APPLICATION (DCA)</option>
                 <option value="DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)">DIPLOMA IN COMPUTER APPLICATION (DCA+TALLY)</option>
                 <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (ENGLISH+HINDI)">DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (ENGLISH+HINDI)</option>
+                <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (ENGLISH)">DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (ENGLISH)</option>
+                <option value="DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (HINDI)">DIPLOMA IN COMPUTER APPLICATION (DCA)+TYPING (HINDI)</option>
                 <option value="University Programs">Aisect University Programs</option>
               </select>
             </div>
