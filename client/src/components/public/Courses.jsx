@@ -25,13 +25,13 @@ export default function Courses() {
       duration: "6+6 Months"
     },
     {
-      name: "ENGLISH TYPING COURSE",
+      name: "COMPUTER TYPING COURSE ENGLISH",
       icon: "⌨️",
       description: "Master English typing skills",
       duration: "6 Months"
     },
     {
-      name: "HINDI TYPING COURSE",
+      name: "COMPUTER TYPING COURSE HINDI",
       icon: "⌨️",
       description: "Master Hindi typing skills",
       duration: "6 Months"
